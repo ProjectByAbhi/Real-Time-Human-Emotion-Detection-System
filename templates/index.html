@@ -148,7 +148,15 @@
           <!-- Video Container -->
           <div class="video-container">
             <!-- Live Camera Feed -->
-            <img id="video-feed" alt="Live camera feed" style="display: none" />
+            <video
+              id="video-feed"
+              autoplay
+              playsinline
+              muted
+              style="display: none"
+            ></video>
+
+            <canvas id="face-overlay" style="display: none"></canvas>
 
             <!-- Camera Placeholder -->
             <div class="camera-placeholder" id="camera-placeholder">

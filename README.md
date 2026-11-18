@@ -1,23 +1,23 @@
 # Real-Time Human Emotion Detection System
 
-**EmotionSense** is a real-time facial emotion detection system that uses Deep Learning and Computer Vision to recognize human emotions through a webcam.
+**EmotionSense** is a real-time facial emotion detection system that uses Deep Learning and Computer Vision to recognize human emotions through a browser webcam.
 
-The system detects faces using OpenCV and predicts facial emotions using a Convolutional Neural Network (CNN). It displays the detected emotion and confidence scores through an interactive web dashboard.
+The application captures frames from the user's browser camera, sends them to a Flask backend for face detection and emotion prediction, and displays the results on an interactive dashboard.
 
 ## Features
 
-- Real-time face detection using OpenCV.
-- Facial emotion classification using a CNN model.
-- Webcam-based emotion detection.
+- Real-time face detection using OpenCV and a Haar Cascade classifier.
+- Facial emotion classification using a Convolutional Neural Network (CNN).
+- Browser-based webcam access.
 - Supports 7 emotion categories.
-- Displays emotion confidence and probability scores.
-- Interactive web dashboard.
+- Displays detected emotion, confidence, and probability scores.
+- Draws a face detection box with the predicted emotion label.
 - Start and stop camera functionality.
-- Responsive user interface.
+- Responsive web dashboard.
 
 ## Emotions Detected
 
-The system recognizes seven facial emotions:
+The system recognizes seven facial emotion categories:
 
 1. Angry
 2. Disgust
@@ -29,23 +29,24 @@ The system recognizes seven facial emotions:
 
 ## Technologies Used
 
-| Technology         | Purpose                             |
-| ------------------ | ----------------------------------- |
-| Python             | Backend development                 |
-| TensorFlow / Keras | Deep Learning model                 |
-| OpenCV             | Face detection and image processing |
-| Flask              | Web application                     |
-| HTML               | Webpage structure                   |
-| CSS                | Dashboard styling                   |
-| JavaScript         | Real-time frontend interaction      |
-| NumPy              | Numerical operations                |
+| Technology         | Purpose                                  |
+| ------------------ | ---------------------------------------- |
+| Python             | Backend development                      |
+| TensorFlow / Keras | Deep Learning model                      |
+| OpenCV             | Face detection and image processing      |
+| Flask              | Web application and frame-processing API |
+| HTML               | Webpage structure                        |
+| CSS                | Dashboard styling                        |
+| JavaScript         | Browser camera and frontend interaction  |
+| NumPy              | Numerical operations                     |
 
 ## Project Structure
 
 ```text
-Emotion_Detection_CNN/
+Real-Time-Human-Emotion-Detection-System/
 │
 ├── app.py
+├── requirements.txt
 ├── emotion_model_v2_weights.npz
 ├── haarcascade_frontalface_default.xml
 │
@@ -75,33 +76,28 @@ git clone https://github.com/ProjectByAbhi/Real-Time-Human-Emotion-Detection-Sys
 cd Real-Time-Human-Emotion-Detection-System
 ```
 
-### 3. Create a Virtual Environment
-
-```bash
-python -m venv .venv
-```
-
-### 4. Activate the Virtual Environment
+### 3. Create and Activate a Virtual Environment
 
 For Windows PowerShell:
 
 ```powershell
+python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-### 5. Install Required Libraries
+### 4. Install Dependencies
 
 ```bash
-pip install flask tensorflow==2.15.0 opencv-python==4.10.0.84 numpy
+pip install -r requirements.txt
 ```
 
-### 6. Run the Application
+### 5. Run the Application
 
 ```bash
 python app.py
 ```
 
-### 7. Open in Browser
+### 6. Open in Browser
 
 Visit:
 
@@ -109,7 +105,9 @@ Visit:
 http://127.0.0.1:5000
 ```
 
-Allow camera access and click **Start Camera** to begin real-time emotion detection.
+Allow camera access when your browser prompts you, then click **Start Camera** to begin emotion detection.
+
+> Camera access requires a secure context: localhost during local development, or HTTPS when deployed.
 
 ## Model Information
 
@@ -121,13 +119,22 @@ Allow camera access and click **Start Camera** to begin real-time emotion detect
 
 ## How It Works
 
-1. The webcam captures live video.
-2. OpenCV detects faces using the Haar Cascade classifier.
-3. The detected face is converted into grayscale.
-4. The face image is resized to 48 × 48 pixels.
-5. The CNN model predicts the emotion.
-6. The Flask backend provides prediction results to the frontend.
-7. The dashboard displays the detected emotion and probability scores.
+1. JavaScript requests access to the webcam in the user's browser.
+2. The browser captures video frames and sends them to the Flask `/process_frame` endpoint.
+3. OpenCV detects the face using the Haar Cascade classifier.
+4. The detected face is converted to grayscale and resized to 48 × 48 pixels.
+5. The CNN model predicts probabilities for the seven emotion categories.
+6. The backend smooths recent predictions and returns the emotion, confidence, probabilities, and face coordinates.
+7. The dashboard displays the prediction and draws the face detection box with its emotion label.
+
+## Deployment
+
+The application is intended for deployment on Render using Gunicorn.
+
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `gunicorn app:app`
+
+The public deployment link will be added here after deployment is completed.
 
 ## Future Improvements
 

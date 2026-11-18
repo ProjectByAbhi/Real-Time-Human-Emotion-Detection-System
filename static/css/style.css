@@ -196,7 +196,9 @@ body {
   overflow: hidden;
 }
 
-.video-container img {
+.video-container img,
+.video-container video,
+.video-container canvas {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -204,6 +206,7 @@ body {
   object-fit: contain;
   display: block;
   background: transparent;
+  z-index: 2;
 }
 
 .camera-placeholder {
