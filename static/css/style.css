@@ -1,0 +1,452 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --background: #0b1120;
+  --panel: #172338;
+  --panel-light: #1e2d44;
+  --border: #2b3d56;
+  --text: #f1f5f9;
+  --muted: #9aabc0;
+  --accent: #38bdf8;
+  --green: #22c55e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: var(--background);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  height: 76px;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111c30;
+  border-bottom: 1px solid var(--border);
+}
+
+/* EmotionSense Brand */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  color: var(--accent);
+  filter: drop-shadow(0 0 7px rgba(56, 189, 248, 0.35));
+}
+
+.brand-name {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+  color: var(--text);
+}
+
+.brand-highlight {
+  color: var(--accent);
+}
+
+/* Navbar Status */
+
+.nav-status,
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  background: var(--green);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--green);
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+  width: 92%;
+  max-width: 1500px;
+  margin: 40px auto;
+}
+
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.welcome h1 {
+  font-size: clamp(25px, 3vw, 36px);
+  margin-bottom: 10px;
+}
+
+.subtitle,
+.panel-heading p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.model-tag {
+  color: var(--accent);
+  background: #102b43;
+  border: 1px solid #245477;
+  border-radius: 20px;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================
+   DASHBOARD GRID
+========================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(300px, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* =========================
+   PANELS
+========================= */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 25px;
+  min-width: 0;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.panel-heading h2 {
+  font-size: 19px;
+  margin-bottom: 7px;
+}
+
+.panel-heading p {
+  font-size: 12px;
+}
+
+.live-badge {
+  color: var(--green);
+  background: #123329;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+}
+
+/* =========================
+   LIVE CAMERA
+========================= */
+
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #080d17;
+  border: 1px solid #334963;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.video-container img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background: transparent;
+}
+
+.camera-placeholder {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: #080d17;
+  font-size: 14px;
+  z-index: 2;
+}
+
+/* =========================
+   CAMERA CONTROLS
+========================= */
+
+.camera-controls {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+.btn-primary {
+  color: #071321;
+  background: var(--accent);
+}
+
+.btn-secondary {
+  color: var(--text);
+  background: var(--panel-light);
+  border: 1px solid var(--border);
+}
+
+/* =========================
+   EMOTION RESULT
+========================= */
+
+.emotion-result {
+  background: linear-gradient(135deg, #12334b, #202c50);
+  border: 1px solid #315776;
+  border-radius: 13px;
+  padding: 23px;
+  margin-bottom: 28px;
+}
+
+.result-label {
+  color: #9eb6ce;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.emotion-result h2 {
+  color: var(--accent);
+  font-size: 34px;
+  margin: 12px 0 6px;
+  overflow-wrap: anywhere;
+}
+
+.emotion-result p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* =========================
+   EMOTION PROBABILITIES
+========================= */
+
+.probability-section h3 {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.emotion-row {
+  margin-bottom: 17px;
+}
+
+.emotion-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #dce6f2;
+}
+
+.emotion-info span:last-child {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.progress-track {
+  height: 8px;
+  width: 100%;
+  background: #304057;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #38bdf8, #818cf8);
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 35px;
+  padding: 20px 15px;
+}
+
+.footer-name {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 550px) {
+  .navbar {
+    padding: 0 4%;
+  }
+
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand-name {
+    font-size: 20px;
+  }
+
+  .dashboard {
+    width: 94%;
+    margin-top: 25px;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .welcome {
+    flex-direction: column;
+  }
+
+  .camera-controls {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+  /* Mobile heading improvements */
+  .welcome h1 {
+    font-size: 28px;
+    line-height: 1.25;
+  }
+
+  .welcome p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .welcome {
+    gap: 12px;
+  }
+}
+
+/* ======================================
+   CAMERA STATUS COLORS
+====================================== */
+
+.live-badge[data-state="offline"] {
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.live-badge[data-state="starting"] {
+  color: #facc15;
+  background: rgba(250, 204, 21, 0.12);
+}
+
+.live-badge[data-state="live"] {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.12);
+}
+
+.live-badge[data-state="error"] {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.12);
+}
+
+/* Status indicator colors */
+
+.status-dot[data-state="offline"] {
+  background: #94a3b8;
+}
+
+.status-dot[data-state="starting"] {
+  background: #facc15;
+}
+
+.status-dot[data-state="live"] {
+  background: #22c55e;
+}
+
+.status-dot[data-state="error"] {
+  background: #ef4444;
+}
