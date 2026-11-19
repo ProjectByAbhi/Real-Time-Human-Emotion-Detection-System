@@ -247,7 +247,22 @@ print("Face detector loaded successfully!")
 # ==========================================
 
 def process_frame(frame):
+    original_height, original_width = frame.shape[:2]
 
+    resize_scale = 1.0
+    max_width = 320
+
+    if original_width > max_width:
+        resize_scale = original_width / max_width
+
+        resized_height = int(original_height / resize_scale)
+
+        frame = cv2.resize(
+            frame,
+            (max_width, resized_height),
+            interpolation=cv2.INTER_AREA
+        )
+        
     gray = cv2.cvtColor(
         frame,
         cv2.COLOR_BGR2GRAY
@@ -256,7 +271,7 @@ def process_frame(frame):
     faces = face_detector.detectMultiScale(
         gray,
         scaleFactor=1.3,
-        minNeighbors=5,
+        minNeighbors=3,
         minSize=(30, 30)
     )
 
@@ -315,10 +330,10 @@ def process_frame(frame):
         )
         # Store face coordinates and prediction
         face_box = {
-            "x": int(x),
-            "y": int(y),
-            "width": int(w),
-            "height": int(h),
+            "x": int(x * resize_scale),
+            "y": int(y * resize_scale),
+            "width": int(w * resize_scale),
+            "height": int(h * resize_scale),
             "emotion": emotion,
             "confidence": confidence
         }
