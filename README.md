@@ -12,9 +12,6 @@ A Deep Learning and Computer Vision-based application that detects human faces a
 
 [**Real-Time Human Emotion Detection System ↗**](https://github.com/ProjectByAbhi/Real-Time-Human-Emotion-Detection-System)
 
-## 🖥️ Homepage Preview
-
-![EmotionSense Homepage](screenshots/homepage.png)
 
 ## 📌 About the Project
 
