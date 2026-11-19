@@ -1,23 +1,45 @@
 # Real-Time Human Emotion Detection System
 
-**EmotionSense** is a real-time facial emotion detection system that uses Deep Learning and Computer Vision to recognize human emotions through a browser webcam.
+### EmotionSense – Real-Time Facial Emotion Recognition Using CNN
 
-The application captures frames from the user's browser camera, sends them to a Flask backend for face detection and emotion prediction, and displays the results on an interactive dashboard.
+A Deep Learning and Computer Vision-based application that detects human faces and predicts facial expressions in real time using a Convolutional Neural Network (CNN).
 
-## Features
+## 🚀 Live Demo
 
-- Real-time face detection using OpenCV and a Haar Cascade classifier.
-- Facial emotion classification using a Convolutional Neural Network (CNN).
-- Browser-based webcam access.
-- Supports 7 emotion categories.
-- Displays detected emotion, confidence, and probability scores.
-- Draws a face detection box with the predicted emotion label.
-- Start and stop camera functionality.
-- Responsive web dashboard.
+[**EmotionSense – Live Demo ↗**](https://real-time-human-emotion-detection-system-sumdwycybq5onyrcv7d2i.streamlit.app/)
 
-## Emotions Detected
+## 💻 GitHub Repository
 
-The system recognizes seven facial emotion categories:
+[**Real-Time Human Emotion Detection System ↗**](https://github.com/ProjectByAbhi/Real-Time-Human-Emotion-Detection-System)
+
+## 🖥️ Homepage Preview
+
+![EmotionSense Homepage](screenshots/homepage.png)
+
+## 📌 About the Project
+
+EmotionSense is a Real-Time Human Emotion Detection System developed using Python, TensorFlow, Keras, and OpenCV.
+
+The system uses a trained Convolutional Neural Network (CNN) to recognize seven facial expressions from live webcam input.
+
+The original application is developed using **Python and Flask**. An additional **Streamlit interface** is provided for an interactive live demonstration using the same trained model and facial emotion detection pipeline.
+
+The Streamlit interface is an additional demonstration interface and does not replace the original Flask application.
+
+## ✨ Features
+
+- Real-time face detection using OpenCV Haar Cascade.
+- Facial emotion classification using a trained CNN model.
+- Detection of seven different facial expressions.
+- Live webcam input through the browser.
+- Face detection bounding box with emotion label.
+- Confidence score for the predicted emotion.
+- Probability distribution for all seven emotions.
+- Separate Flask and Streamlit application interfaces.
+
+## 😊 Emotions Detected
+
+The model recognizes the following seven emotions:
 
 1. Angry
 2. Disgust
@@ -27,42 +49,98 @@ The system recognizes seven facial emotion categories:
 6. Sad
 7. Surprise
 
-## Technologies Used
+## 🛠️ Technologies Used
 
-| Technology         | Purpose                                  |
-| ------------------ | ---------------------------------------- |
-| Python             | Backend development                      |
-| TensorFlow / Keras | Deep Learning model                      |
-| OpenCV             | Face detection and image processing      |
-| Flask              | Web application and frame-processing API |
-| HTML               | Webpage structure                        |
-| CSS                | Dashboard styling                        |
-| JavaScript         | Browser camera and frontend interaction  |
-| NumPy              | Numerical operations                     |
+| Technology            | Purpose                             |
+| --------------------- | ----------------------------------- |
+| Python                | Main programming language           |
+| TensorFlow            | Deep Learning framework             |
+| Keras                 | CNN model development               |
+| OpenCV                | Face detection and image processing |
+| NumPy                 | Numerical operations                |
+| Flask                 | Original web application            |
+| Streamlit             | Additional live demo interface      |
+| streamlit-webrtc      | Browser webcam integration          |
+| HTML, CSS, JavaScript | Flask web interface                 |
 
-## Project Structure
+## 🧠 Model Information
+
+The project uses a Convolutional Neural Network (CNN) for facial emotion classification.
+
+| Parameter           | Details                      |
+| ------------------- | ---------------------------- |
+| Model Type          | Convolutional Neural Network |
+| Input Image Size    | 48 × 48 pixels               |
+| Image Format        | Grayscale                    |
+| Output Classes      | 7 Emotions                   |
+| Activation Function | Softmax                      |
+| Framework           | TensorFlow / Keras           |
+
+The trained model weights are stored in `emotion_model_v2_weights.npz`.
+
+## ⚙️ How It Works
+
+1. The application receives video frames from the webcam.
+2. OpenCV Haar Cascade detects the face.
+3. The detected face is converted into grayscale.
+4. The face image is resized to 48 × 48 pixels.
+5. The processed image is passed to the trained CNN model.
+6. The model predicts probabilities for seven emotions.
+7. The predicted emotion and confidence score are displayed on the dashboard.
+
+## 🏗️ Project Architecture
+
+This repository contains two application interfaces.
+
+### 1. Original Flask Application
+
+The main implementation of the project, developed using Flask, Python, TensorFlow, and OpenCV.
+
+It processes webcam frames through the Flask backend and displays facial emotion predictions on its web interface.
+
+**Run command:**
+
+```bash
+python app.py
+```
+
+### 2. Additional Streamlit Demo
+
+A separate demonstration interface developed using Streamlit and Streamlit WebRTC.
+
+It uses the same CNN architecture, trained model weights, Haar Cascade classifier, and emotion classification approach as the original project.
+
+**Run command:**
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Both interfaces are part of the same project. Streamlit does not replace the original Flask implementation.
+
+## 📂 Project Structure
 
 ```text
 Real-Time-Human-Emotion-Detection-System/
 │
 ├── app.py
+├── streamlit_app.py
 ├── requirements.txt
+├── .python-version
+│
 ├── emotion_model_v2_weights.npz
 ├── haarcascade_frontalface_default.xml
 │
 ├── templates/
-│   └── index.html
-│
 ├── static/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── script.js
+│
+├── screenshots/
+│   └── homepage.png
 │
 └── README.md
 ```
 
-## Installation and Setup
+## 💻 Installation and Setup
 
 ### 1. Clone the Repository
 
@@ -70,85 +148,95 @@ Real-Time-Human-Emotion-Detection-System/
 git clone https://github.com/ProjectByAbhi/Real-Time-Human-Emotion-Detection-System.git
 ```
 
-### 2. Open the Project Folder
+### 2. Navigate to the Project Directory
 
 ```bash
 cd Real-Time-Human-Emotion-Detection-System
 ```
 
-### 3. Create and Activate a Virtual Environment
+### 3. Create a Virtual Environment
 
-For Windows PowerShell:
-
-```powershell
+```bash
 python -m venv .venv
-.venv\Scripts\Activate.ps1
 ```
 
-### 4. Install Dependencies
+### 4. Activate the Virtual Environment
+
+**Windows:**
+
+```bash
+.venv\Scripts\activate
+```
+
+**Linux / macOS:**
+
+```bash
+source .venv/bin/activate
+```
+
+### 5. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 5. Run the Application
+## ▶️ Run the Application
+
+Choose either of the following interfaces.
+
+### Option 1: Run the Original Flask Application
 
 ```bash
 python app.py
 ```
 
-### 6. Open in Browser
-
-Visit:
+Open the following address in your browser:
 
 ```text
 http://127.0.0.1:5000
 ```
 
-Allow camera access when your browser prompts you, then click **Start Camera** to begin emotion detection.
+### Option 2: Run the Streamlit Demo
 
-> Camera access requires a secure context: localhost during local development, or HTTPS when deployed.
+```bash
+streamlit run streamlit_app.py
+```
 
-## Model Information
+Open the following address in your browser:
 
-- Model Type: Convolutional Neural Network (CNN)
-- Input Image Size: 48 × 48 pixels
-- Image Format: Grayscale
-- Number of Classes: 7
-- Model Weights: `emotion_model_v2_weights.npz`
+```text
+http://localhost:8501
+```
 
-## How It Works
+Allow camera access when prompted by your browser.
 
-1. JavaScript requests access to the webcam in the user's browser.
-2. The browser captures video frames and sends them to the Flask `/process_frame` endpoint.
-3. OpenCV detects the face using the Haar Cascade classifier.
-4. The detected face is converted to grayscale and resized to 48 × 48 pixels.
-5. The CNN model predicts probabilities for the seven emotion categories.
-6. The backend smooths recent predictions and returns the emotion, confidence, probabilities, and face coordinates.
-7. The dashboard displays the prediction and draws the face detection box with its emotion label.
+## 🌐 Deployment
 
-## Deployment
+The additional Streamlit demonstration interface is deployed using **Streamlit Community Cloud**.
 
-The application is intended for deployment on Render using Gunicorn.
+**Live Application:** [EmotionSense – Live Demo ↗](https://real-time-human-emotion-detection-system-sumdwycybq5onyrcv7d2i.streamlit.app/)
 
-- Build Command: `pip install -r requirements.txt`
-- Start Command: `gunicorn app:app`
+The original Flask application remains available in the repository as the main implementation and can be run locally using `python app.py`.
 
-The public deployment link will be added here after deployment is completed.
-
-## Future Improvements
+## 🔮 Future Improvements
 
 - Improve emotion classification accuracy.
-- Enhance detection under different lighting conditions.
-- Explore more advanced face detection techniques.
-- Improve prediction speed and performance.
+- Optimize model inference speed.
+- Improve performance under different lighting conditions.
+- Explore advanced CNN architectures.
+- Enhance the user interface and visualization.
 
-## Author
+## 👨‍💻 Author
 
 **Abhishek Rai**
 
-GitHub: [ProjectByAbhi](https://github.com/ProjectByAbhi)
+MCA Student | Artificial Intelligence & Machine Learning
+
+- GitHub: [ProjectByAbhi ↗](https://github.com/ProjectByAbhi)
+- Project Repository: [Emotion Detection System ↗](https://github.com/ProjectByAbhi/Real-Time-Human-Emotion-Detection-System)
 
 ---
 
-_EmotionSense – Real-Time Human Emotion Detection System_
+⭐ If you find this project interesting, consider giving the repository a star!
+
+**Thank you for visiting EmotionSense!**
