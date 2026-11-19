@@ -651,7 +651,7 @@ st.markdown(
 
 prediction_lock = threading.Lock()
 callback_lock = threading.Lock()
-prediction_history = deque(maxlen=10)
+prediction_history = deque(maxlen=5)
 
 shared_state = {
     "last_processed": 0.0,
